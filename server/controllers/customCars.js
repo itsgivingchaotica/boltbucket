@@ -1,4 +1,4 @@
-import CustomCar from "../models/customCar";
+import CustomCar from "../models/customCar.js";
 
 //show all custom cars
 const index = async (req, res, next) => {
