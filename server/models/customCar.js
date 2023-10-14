@@ -1,4 +1,4 @@
-import pool from "../config/database.js";
+import { pool } from "../config/database.js";
 
 const findAll = () => {
   const query = "SELECT * FROM customCars ORDER BY name ASC";
