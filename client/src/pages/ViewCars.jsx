@@ -1,13 +1,10 @@
-import React from 'react'
-import '../App.css'
+import React, { useEffect, useState } from "react";
+import "../App.css";
+import Card from "../components/ListingCard";
 
 const ViewCars = () => {
-    
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  const [customCars, setCustomCars] = useState([]);
+  return <div></div>;
+};
 
-export default ViewCars
+export default ViewCars;
