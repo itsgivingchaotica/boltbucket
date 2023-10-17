@@ -12,20 +12,21 @@ const findOne = (id) => {
 
 const create = (carName, exterior, wheels, roof, interior, pricepoint) => {
   const query =
-    "INSERT INTO customCars (name, exterior, wheels, roof, interior, pricepoint) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *";
+    "INSERT INTO customCars (name, exterior, wheels, roof, interior, convertible, pricepoint) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *";
   return pool.query(query, [
     carName,
     exterior,
     wheels,
     roof,
     interior,
+    convertible,
     pricepoint,
   ]);
 };
 
 const update = (id, carName, exterior, wheels, roof, interior, pricepoint) => {
   const query =
-    "UPDATE customCars SET name = $2, exterior = $3, wheels = $4, roof = $5, interior = $6, pricepoint = $7 WHERE id = $1 RETURNING *";
+    "UPDATE customCars SET name = $2, exterior = $3, wheels = $4, roof = $5, interior = $6, convertible = $7, pricepoint = $8 WHERE id = $1 RETURNING *";
   return pool.query(query, [
     id,
     carName,
@@ -33,6 +34,7 @@ const update = (id, carName, exterior, wheels, roof, interior, pricepoint) => {
     wheels,
     roof,
     interior,
+    convertible,
     pricepoint,
   ]);
 };

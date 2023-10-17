@@ -1,0 +1,41 @@
+.card {
+  width: 70rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.header-content img {
+  margin-right: 1rem;
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.card-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.card-item img {
+  margin-right: 1rem;
+  width: 2rem;
+}
+
+.card-item p {
+  display: flex;
+}
+
+.card-item p :first-child {
+  margin-right: 10px;
+  font-weight: bold;
+}

@@ -13,6 +13,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use("/api", customCarsRouter);
 
 if (process.env.NODE_ENV === "development") {
   app.use(favicon(path.resolve("../", "client", "public", "lightning.png")));
@@ -21,7 +22,13 @@ if (process.env.NODE_ENV === "development") {
   app.use(express.static("public"));
 }
 
-app.use("/api", customCarsRouter);
+app.get("/", (req, res) => {
+  res
+    .status(200)
+    .send(
+      '<h1 style="text-align: center; margin-top: 50px;">BoltBucket API</h1>'
+    );
+});
 
 if (process.env.NODE_ENV === "production") {
   app.get("/*", (_, res) => res.sendFile(path.resolve("public", "index.html")));

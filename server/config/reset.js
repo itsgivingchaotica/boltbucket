@@ -13,7 +13,8 @@ const createCustomCarsTable = async () => {
         roof VARCHAR(255) NOT NULL,
         wheels VARCHAR(255) NOT NULL,
         interior VARCHAR(255) NOT NULL,
-        pricepoint INTEGER NOT NULL
+        convertible BOOLEAN NOT NULL DEFAULT FALSE,
+        pricepoint MONEY NOT NULL
     )
 `;
 
@@ -30,7 +31,7 @@ const seedCustomCarsTable = async () => {
 
   customCarData.forEach((customCar) => {
     const insertQuery = {
-      text: "INSERT INTO customCars (name, exterior, roof, wheels, interior, pricepoint) VALUES ($1, $2, $3, $4, $5, $6)",
+      text: "INSERT INTO customCars (name, exterior, roof, wheels, interior, convertible, pricepoint) VALUES ($1, $2, $3, $4, $5, $6, $7)",
     };
 
     const values = [
@@ -39,6 +40,7 @@ const seedCustomCarsTable = async () => {
       customCar.roof,
       customCar.wheels,
       customCar.interior,
+      customCar.convertible,
       customCar.pricepoint,
     ];
     pool.query(insertQuery, values, (err, res) => {

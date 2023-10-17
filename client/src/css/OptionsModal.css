@@ -1,0 +1,33 @@
+p img {
+  width: 10rem;
+  margin: 2rem;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  margin-top: 2rem;
+  border-bottom: 1px solid white;
+}
+.image-container img {
+  width: 16rem;
+  height: auto;
+  display: block;
+  display: flex;
+}
+.options-list-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.custom-price {
+  display: flex;
+  align-items: center;
+}
+
+.convertible-option {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 2rem;
+}
