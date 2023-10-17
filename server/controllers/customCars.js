@@ -2,11 +2,13 @@ import CustomCar from "../models/customCar.js";
 
 //show all custom cars
 const index = async (req, res, next) => {
+  console.log("Hello from index");
   try {
     const customCars = await CustomCar.findAll();
     res.status(200).json(customCars.rows);
   } catch (error) {
-    next(error);
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -24,7 +26,15 @@ const show = async (req, res, next) => {
 //create a new custom car
 const create = async (req, res, next) => {
   try {
-    const { carName, exterior, wheels, roof, interior, convertible, pricepoint } = req.body;
+    const {
+      carName,
+      exterior,
+      wheels,
+      roof,
+      interior,
+      convertible,
+      pricepoint,
+    } = req.body;
     const customCar = await CustomCar.create(
       carName,
       exterior,
@@ -44,7 +54,15 @@ const create = async (req, res, next) => {
 const update = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { carName, exterior, wheels, roof, interior, convertible, pricepoint } = req.body;
+    const {
+      carName,
+      exterior,
+      wheels,
+      roof,
+      interior,
+      convertible,
+      pricepoint,
+    } = req.body;
     const customCar = await CustomCar.update(
       id,
       carName,

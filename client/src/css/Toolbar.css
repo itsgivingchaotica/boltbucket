@@ -1,0 +1,42 @@
+.option-buttons {
+  display: flex;
+}
+
+.toolbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name-car {
+  display: flex;
+  align-items: center;
+  transform: translateY(0.8rem);
+}
+
+.white-placeholder::placeholder {
+  color: white;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+  align-items: center;
+}
+
+.white-placeholder {
+  margin-top: 1rem;
+  margin-right: 2rem;
+  color: white;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+}
+
+.crete-car-button {
+  padding: 5rem;
+}
+
+.convertible-message {
+  display: flex;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  color: white !important;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 1);
+  font-size: 1.3rem;
+}

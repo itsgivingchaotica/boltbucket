@@ -1,13 +1,17 @@
+import { calculatePrice } from "../utilities/priceCalculation";
 const API_BASE_URL = "http://localhost:3000/api";
 
 // Function to get all custom cars
 const getAllCars = async () => {
   try {
+    console.log("Getting all cars from CarsAPI");
     const response = await fetch(`${API_BASE_URL}/customcars`);
     if (!response.ok) {
       throw new Error(`Failed to fetch cars: ${response.status}`);
     }
-    return response.json();
+    const data = await response.json();
+    console.log("Received car data:", data); // Log the received data
+    return data;
   } catch (error) {
     console.error("Error fetching cars:", error);
     throw error;
@@ -28,14 +32,12 @@ const getCarById = async (id) => {
   }
 };
 
-const createCar = async (
-  carName,
-  exterior,
-  wheels,
-  roof,
-  interior,
-  pricepoint
-) => {
+const createCar = async (carBuild) => {
+  const { name, exterior, wheels, roof, interior, pricepoint } = carBuild;
+  const newPrice = calculatePrice(carBuild);
+  if (newPrice === -1) {
+    throw new Error("Invalid car build");
+  }
   try {
     const response = await fetch(`${API_BASE_URL}/customcars`, {
       method: "POST",
@@ -43,17 +45,19 @@ const createCar = async (
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        carName,
-        exterior,
-        wheels,
-        roof,
-        interior,
-        pricepoint,
+        name,
+        exterior: exterior[0].name,
+        wheels: wheels[0].name,
+        roof: roof[0].name,
+        interior: interior[0].name,
+        convertible,
+        pricepoint: newPrice,
       }),
     });
     if (!response.ok) {
       throw new Error(`Failed to create car: ${response.status}`);
     }
+    console.log(response.json());
     return response.json();
   } catch (error) {
     console.error("Error creating car:", error);
